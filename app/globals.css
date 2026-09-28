@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* AI LOVE REEL STUDIO — dark cinematic studio theme.
+   Near-black canvas, warm amber/gold accent, a sparing violet glow. */
+@theme {
+  --color-ink: #0a0908;
+  --color-panel: #141217;
+  --color-panel-2: #1c1920;
+  --color-line: #2b2631;
+  --color-text: #f4efe8;
+  --color-muted: #a8a09a;
+  --color-faint: #6f6872;
+  --color-amber: #f2b13c;
+  --color-amber-deep: #d98c1f;
+  --color-violet: #7b6cf2;
+  --color-ok: #6fcf97;
+  --color-bad: #ff7a6b;
+
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, "Nirmala UI", "Noto Sans Devanagari", sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--color-ink);
+  color: var(--color-text);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  min-height: 100dvh;
+}
+
+/* Soft cinematic glow behind the whole app. */
+.studio-glow {
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(242, 177, 60, 0.14), transparent 60%),
+    radial-gradient(80% 50% at 110% 20%, rgba(123, 108, 242, 0.1), transparent 60%);
+}
+
+.gold-text {
+  background: linear-gradient(100deg, #ffd98a 0%, #f2b13c 45%, #d98c1f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #f6c35e 0%, #e89d27 100%);
+  color: #1a1206;
+  box-shadow: 0 10px 30px -10px rgba(242, 177, 60, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.btn-primary:disabled {
+  filter: grayscale(0.4) brightness(0.75);
+  box-shadow: none;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #1c1920 0%, #2a2530 50%, #1c1920 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(242, 177, 60, 0.5); }
+  100% { box-shadow: 0 0 0 10px rgba(242, 177, 60, 0); }
+}
+.pulse-ring {
+  animation: pulse-ring 1.4s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer, .pulse-ring, .animate-spin { animation: none; }
+}
+
+.pb-safe {
+  padding-bottom: max(env(safe-area-inset-bottom), 0px);
+}
